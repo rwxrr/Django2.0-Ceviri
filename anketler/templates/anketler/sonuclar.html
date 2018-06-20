@@ -1,0 +1,8 @@
+<h1>{{ soru.soru_metni }}</h1>
+
+<ul>
+{% for secim in soru.secim_set.all %}
+	<li>{{ secim.secim_metni }} -- {{ secim.oylar }} oy{{ secim.oylar|pluralize }}</li>
+{% endfor %}
+</ul>
+

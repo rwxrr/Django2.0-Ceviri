@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'anketler/style.css' %}">
+
+{% if son_sorular_listesi %}
+    <ul>
+    {% for soru in son_sorular_listesi %}
+    	<li><a href="/anketler/{{ soru.id }}/">{{ soru.soru_metni }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+	<p>Anket bulunamadı.</p>
+{% endif %}

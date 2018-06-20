@@ -1,0 +1,13 @@
+<h1>{{ soru.soru_metni 	}}</h1>
+
+{% if hata_mesaji %}<p><strong>{{ hata_mesaji }}</strong></p>{% endif %}
+
+<form action="{% url 'anketler:oy' soru.id %}" method="post">
+{% csrf_token %}
+{% for secim in soru.secim_set.all %}
+	<input type="radio" name="secim" id="secim{{ forloop.counter }}" value="{{ secim.id }}"/>
+	<label for="secim {{ forloop.counter }}">{{ secim.secim_metni }}</label><br/>
+{% endfor %}
+<input type="submit" value="Oy ver"/>
+</form>
+
